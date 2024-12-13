@@ -31,7 +31,7 @@ public class Movie extends PanacheEntityBase {
     public Actor mainActor;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "movie_sec_actor",
+    @JoinTable(name = "movie_sec_actors",
             joinColumns = @JoinColumn(name = "id_movie"),
             inverseJoinColumns = @JoinColumn(name = "id_actor"))
     public Set<Actor> secondaryActors = new HashSet<>();

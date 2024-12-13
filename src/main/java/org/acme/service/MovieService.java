@@ -41,7 +41,7 @@ public class MovieService {
         if (mainActorId != null) {
             Actor mainActor = actorRepository.findById(mainActorId);
             if (mainActor == null) {
-                throw new WebApplicationException("Main actor not found", 400);
+                throw new WebApplicationException("Acteur principal non existant", 400);
             }
             movie.mainActor = mainActor;
         }

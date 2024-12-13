@@ -44,7 +44,7 @@ public class MovieResource {
     public Response addMovie(MovieCreateRequest dto) {
         if (dto.title == null || dto.movieType == null || dto.copies == 0 || dto.mainActorId == null) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Missing required fields (title, movieType, copies, mainActorId)").build();
+                    .entity("Champs manquants (title, movieType, copies, mainActorId)").build();
         }
 
         Movie created = movieService.createMovie(dto.title, dto.copies, dto.movieType, dto.mainActorId);
@@ -76,14 +76,14 @@ public class MovieResource {
     public Response addSecondaryActor(@PathParam("id") Long movieId, AddActorToMovieRequest request) {
         if (request.actorId == null) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Actor id is required")
+                    .entity("Acteur manquant")
                     .build();
         }
 
         boolean added = movieService.addSecondaryActor(movieId, request.actorId);
         if (!added) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Movie or Actor not found")
+                    .entity("Film ou acteur non existant")
                     .build();
         }
         return Response.status(Response.Status.CREATED).build();
@@ -95,7 +95,7 @@ public class MovieResource {
     public Response removeSecondaryActor(@PathParam("movieId") Long movieId, @PathParam("actorId") Long actorId) {
         boolean removed = movieService.removeSecondaryActor(movieId, actorId);
         if (!removed) {
-            return Response.status(Response.Status.NOT_FOUND).entity("Movie or Actor not found").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Film ou acteur non existant").build();
         }
         return Response.noContent().build();
     }
