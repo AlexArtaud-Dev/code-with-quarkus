@@ -1,0 +1,21 @@
+package org.acme.dto;
+
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+
+// Ce fichier DTO permet de définir un objet qui sera utilisé pour les requêtes POST d'ajout d'un acteur à un film.
+@Schema(name = "AddActorToMovieRequest", description = "Requête pour ajouter un acteur existant à un film en tant qu'acteur secondaire.")
+public class AddActorToMovieRequest {
+
+    @Schema(required = true, description = "ID de l'acteur à ajouter")
+    public Long actorId;
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////      DA52 - EXAMEN FINAL           ////////////////////////////////
+//////////////////////      ARTAUD ALEXANDRE - BAR VALENTIN         ////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
